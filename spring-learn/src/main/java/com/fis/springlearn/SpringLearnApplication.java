@@ -12,6 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.fis.springlearn.bean.Employee;
+
 @SpringBootApplication
 public class SpringLearnApplication {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpringLearnApplication.class);
@@ -21,6 +23,15 @@ public class SpringLearnApplication {
 		displayDate();
 		displayCountry();
 		displayCountries();
+		displayEmployee();
+	}
+	
+	static void displayEmployee() {
+		LOGGER.info("START");
+		ApplicationContext context = new ClassPathXmlApplicationContext("employee.xml");
+		Employee employee = context.getBean("employee", Employee.class);
+		LOGGER.debug("Employee : {}", employee);
+		LOGGER.info("END");
 	}
 
 	static void displayCountries() {
